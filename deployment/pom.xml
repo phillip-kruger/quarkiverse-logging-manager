@@ -54,7 +54,7 @@
 
         <dependency>
             <groupId>io.quarkus</groupId>
-            <artifactId>quarkus-smallrye-openapi-deployment</artifactId>
+            <artifactId>quarkus-agroal-spi</artifactId>
         </dependency>
         
         <dependency>

@@ -4,6 +4,7 @@ import java.util.function.BooleanSupplier;
 
 import io.quarkiverse.loggingui.quarkus.logging.ui.LoggerUiRecorder;
 import io.quarkiverse.loggingui.quarkus.logging.ui.stream.LogstreamSocket;
+import io.quarkus.agroal.spi.JdbcDataSourceSchemaReadyBuildItem;
 import io.quarkus.deployment.Capabilities;
 import io.quarkus.deployment.Capability;
 import io.quarkus.deployment.annotations.BuildProducer;
@@ -12,7 +13,6 @@ import io.quarkus.deployment.annotations.ExecutionTime;
 import io.quarkus.deployment.annotations.Record;
 import io.quarkus.deployment.builditem.FeatureBuildItem;
 import io.quarkus.deployment.builditem.LaunchModeBuildItem;
-import io.quarkus.smallrye.openapi.deployment.OpenApiFilteredIndexViewBuildItem;
 import io.quarkus.smallrye.openapi.deployment.spi.AddToOpenAPIDefinitionBuildItem;
 import io.quarkus.undertow.websockets.deployment.AnnotatedWebsocketEndpointBuildItem;
 import io.quarkus.vertx.http.deployment.RouteBuildItem;
@@ -61,7 +61,7 @@ class LoggingUiProcessor {
     }
 
     @BuildStep(onlyIf = OpenAPIIncluded.class)
-    public void includeInOpenAPIEndpoint2(BuildProducer<OpenApiFilteredIndexViewBuildItem> openAPIProducer,
+    public void includeInOpenAPIEndpoint2(BuildProducer<JdbcDataSourceSchemaReadyBuildItem> openAPIProducer,
             Capabilities capabilities,
             LoggingUiConfig loggingUiConfig) {
 
