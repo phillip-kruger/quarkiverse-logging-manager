@@ -46,10 +46,15 @@
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-jsonb-deployment</artifactId>
         </dependency>
-        
+
         <dependency>
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-smallrye-openapi-spi</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-smallrye-openapi-deployment</artifactId>
         </dependency>
         
         <dependency>

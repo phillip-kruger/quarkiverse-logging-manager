@@ -12,6 +12,7 @@ import io.quarkus.deployment.annotations.ExecutionTime;
 import io.quarkus.deployment.annotations.Record;
 import io.quarkus.deployment.builditem.FeatureBuildItem;
 import io.quarkus.deployment.builditem.LaunchModeBuildItem;
+import io.quarkus.smallrye.openapi.deployment.OpenApiFilteredIndexViewBuildItem;
 import io.quarkus.smallrye.openapi.deployment.spi.AddToOpenAPIDefinitionBuildItem;
 import io.quarkus.undertow.websockets.deployment.AnnotatedWebsocketEndpointBuildItem;
 import io.quarkus.vertx.http.deployment.RouteBuildItem;
@@ -57,6 +58,18 @@ class LoggingUiProcessor {
             LoggingUiOpenAPIFilter filter = new LoggingUiOpenAPIFilter(loggingUiConfig.basePath);
             openAPIProducer.produce(new AddToOpenAPIDefinitionBuildItem(filter));
         }
+    }
+
+    @BuildStep(onlyIf = OpenAPIIncluded.class)
+    public void includeInOpenAPIEndpoint2(BuildProducer<OpenApiFilteredIndexViewBuildItem> openAPIProducer,
+            Capabilities capabilities,
+            LoggingUiConfig loggingUiConfig) {
+
+        // Add to OpenAPI if OpenAPI is available
+        //        if (capabilities.isPresent(Capability.SMALLRYE_OPENAPI)) {
+        //            LoggingUiOpenAPIFilter filter = new LoggingUiOpenAPIFilter(loggingUiConfig.basePath);
+        //            openAPIProducer.produce(new AddToOpenAPIDefinitionBuildItem(filter));
+        //        }
     }
 
     @BuildStep
